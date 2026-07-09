@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Demand Forecasting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1f2937, #111827);
+            color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background: #1f2937;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        h1 { margin-bottom: 10px; }
+        p { color: #9ca3af; margin-bottom: 25px; }
+        a.button {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a.button:hover { background: #2563eb; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>⚡ Electricity Demand Forecasting</h1>
+        <p>XGBoost model trained on 5 years of hourly demand, weather, and calendar data.</p>
+        <a class="button" href="/predictdata">Get a Prediction</a>
+    </div>
+</body>
+</html>

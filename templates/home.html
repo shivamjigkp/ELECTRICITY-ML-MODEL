@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Demand</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #111827;
+            color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #1f2937;
+            padding: 35px 45px;
+            border-radius: 12px;
+            width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        h1 { font-size: 22px; margin-bottom: 5px; }
+        p.hint { color: #9ca3af; font-size: 13px; margin-bottom: 20px; }
+        label { display: block; margin-top: 12px; margin-bottom: 4px; font-size: 13px; color: #d1d5db; }
+        input {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 6px;
+            border: 1px solid #374151;
+            background: #111827;
+            color: #f3f4f6;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 22px;
+            width: 100%;
+            padding: 11px;
+            background: #3b82f6;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover { background: #2563eb; }
+        .result {
+            margin-top: 20px;
+            padding: 14px;
+            background: #064e3b;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Predict Electricity Demand</h1>
+        <p class="hint">
+            This model relies heavily on recent actual demand (same hour yesterday,
+            same hour last week, and the last 24-hour rolling average/std) — so
+            provide those alongside the weather values.
+        </p>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <label>Timestamp (for the hour you want to predict)</label>
+            <input type="datetime-local" name="timestamp" required>
+
+            <label>Temperature</label>
+            <input type="number" step="any" name="temperature" required>
+
+            <label>Humidity</label>
+            <input type="number" step="any" name="humidity" required>
+
+            <label>Demand 24 hours ago</label>
+            <input type="number" step="any" name="demand_lag_24hr" required>
+
+            <label>Demand 168 hours (1 week) ago</label>
+            <input type="number" step="any" name="demand_lag_168hr" required>
+
+            <label>Rolling mean demand (last 24 hrs)</label>
+            <input type="number" step="any" name="demand_rolling_mean_24hr" required>
+
+            <label>Rolling std demand (last 24 hrs)</label>
+            <input type="number" step="any" name="demand_rolling_std_24hr" required>
+
+            <button type="submit">Predict Demand</button>
+        </form>
+
+        {% if results is defined %}
+        <div class="result">Predicted Demand: {{ results }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
