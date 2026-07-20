@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Electricity Demand Forecasting — End-to-End ML Project
 
 Modular, production-style ML project (data ingestion → transformation →
@@ -7,7 +7,7 @@ XGBoost, trained on 5 years of historical demand/weather/calendar data.
 
 ## Project structure
 
-```
+
 mlproject/
 ├── application.py                  # Flask app (main entry point)
 ├── app.py                          # alias entry point (some hosts expect app.py)
@@ -37,7 +37,7 @@ mlproject/
 └── templates/
     ├── index.html                  # landing page
     └── home.html                   # prediction form + result
-```
+
 
 ## How it works
 
@@ -98,5 +98,3 @@ free tiers, connect directly to a GitHub repo, no cloud console setup):
    `requirements.txt` for production; the built-in Flask dev server used in
    `application.py` is fine for local testing only).
 =======
-# ELECTRICITY-ML-MODEL
->>>>>>> 74b90f2732e910310e45cdde799afdf5964d3587
